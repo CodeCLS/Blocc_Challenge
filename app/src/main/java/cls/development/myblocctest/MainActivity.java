@@ -13,6 +13,10 @@ public class MainActivity extends AppCompatActivity {
     //i is the index of the switch. Value 1 is on and value 0 is off
     private int i = 1;
 
+    public int getIndex() {
+        return i;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,5 +98,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         i = 0;
+    }
+
+    public void setIndex(int i) {
+        this.i = i;
     }
 }

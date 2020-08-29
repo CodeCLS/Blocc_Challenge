@@ -24,7 +24,7 @@ public class Switch extends View {
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(150, 150);
+        setMeasuredDimension(150, 140);
 
     }
 
@@ -72,8 +72,8 @@ public class Switch extends View {
 
     }
 
-
-
-
-
+    public void setColor(int color) {
+        this.color = color;
+        invalidate();
+    }
 }
