@@ -1,37 +1,46 @@
-## Welcome to GitHub Pages
+## Blocc Widget
 
-You can use the [editor on GitHub](https://github.com/CodeCLS/Blocc_Challenge/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This project is a widget which was created for the Blocc Intern Challenge. It is made out of three different classes.
+1. Thumb
+2. Switch
+3. MainActivity
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Introduction to code
 
-### Markdown
+The circle and the two Arcs which make up the circle are made within two methods.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
-Syntax highlighted code block
+@Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        draw_Line(canvas);
+        drawArcs(canvas);
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+    }
+```
+The onDraw Method gets overriden everytime the ObjectAnimator makes another step.
+In my MainActivity I call a method which sets the positino of the animation in the Thumb Class and the Switch class.
+This again invalidates the Viewlayout and moves the views and changes the colors.
 
-1. Numbered
-2. List
+```markdown
+ObjectAnimator translateXAnimation= ObjectAnimator.ofFloat(thumb, "translationX",  70f);
+        translateXAnimation.setDuration(300);
+        translateXAnimation.start();
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
+        translateXAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                float x = (Float) valueAnimator.getAnimatedValue();
+
+                switch_widget.setAlpha((70-x)/70+0.3f);
+                thumb.anim_view(x);
+
+            }
+        });
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/CodeCLS/Blocc_Challenge/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
